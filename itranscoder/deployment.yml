@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: itranscoder-backend-app
-        image: ikrambagban/transcoder-backend:1939ebd85448baa0f0bac492d2995021b3fd2fdf
+        image: ikrambagban/transcoder-backend:1ef3f8700055a69a4f0647cbcfafb151a547a7bb
         env:
             - name: AWS_USER_ACCESS_KEY
               valueFrom:
