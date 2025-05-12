@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingres-nginx
+  labels: 
+    name: ingress-nginx
+
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: fdis.ibmeet.xyz
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend: 
+              service:
+                name: fdis-plan-service
+                port:
+                  number: 80 
+  

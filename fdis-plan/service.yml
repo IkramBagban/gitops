@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fdis-plan-service
+spec:
+  type: ClusterIP
+  selector:
+    app: fdis-plan-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
