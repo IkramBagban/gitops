@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: itranscoder-backend-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: itranscoder-backend-app
+  template:
+    metadata:
+      labels:
+        app: itranscoder-backend-app
+    spec:
+      containers:
+      - name: itranscoder-backend-app
+        image: ikrambagban/transcoder-backend:1939ebd85448baa0f0bac492d2995021b3fd2fdf
+        env:
+            - name: AWS_USER_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: itranscoder-secret
+                  key: AWS_USER_ACCESS_KEY
+            - name: AWS_USER_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: itranscoder-secret
+                  key: AWS_USER_SECRET_KEY
+            - name: CDN_URL
+              valueFrom:
+                secretKeyRef:
+                  name: itranscoder-secret
+                  key: CDN_URL
+            - name: SQS_QUEUE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: itranscoder-secret
+                  key: SQS_QUEUE_URL
+            - name: SQS_REGION
+              valueFrom:
+                secretKeyRef:
+                  name: itranscoder-secret
+                  key: SQS_REGION
+            - name: ECS_CLUSTER
+              valueFrom:
+                secretKeyRef:
+                  name: itranscoder-secret
+                  key: ECS_CLUSTER
+            - name: ECS_TASK_DEFINITION
+              valueFrom:
+                secretKeyRef:
+                  name: itranscoder-secret
+                  key: ECS_TASK_DEFINITION
+            - name: REDIS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: itranscoder-secret
+                  key: REDIS_HOST
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: itranscoder-secret
+                  key: REDIS_PASSWORD
+            - name: REDIS_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: itranscoder-secret
+                  key: REDIS_PORT
