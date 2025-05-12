@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fdis-plan-deployment
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fdis-plan-app
+  
+  template:
+    meta: 
+      labels:
+        app: fdis-plan-app
+    spec:
+      containers:
+      - name: fdis-plan-app
+        image: ikrambagban/fdis-plan:dd8022f4e9349b73381a98bcb7704fbc641633ef
+        env:
+          - name: DB_HOST
+            valueFrom:
+              secretKeyRef:
+                name: fdis-plan-secret
+                key: DB_HOST
+
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: fdis-plan-secret
+                key: DB_PASSWORD
+
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: fdis-plan-secret
+                key: DB_USER
+
+          - name: DB_NAME
+            valueFrom:
+              secretKeyRef:
+                name: fdis-plan-secret
+                key: DB_NAME
+
+          - name: DB_PORT
+            valueFrom:
+              secretKeyRef:
+                name: fdis-plan-secret
+                key: DB_PORT
+
+          - name: CLOUDINARY_CLOUD_NAME
+            valueFrom:
+              secretKeyRef:
+                name: fdis-plan-secret
+                key: CLOUDINARY_CLOUD_NAME
+
+          - name: CLOUDINARY_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: fdis-plan-secret
+                key: CLOUDINARY_API_KEY
+
+          - name: CLOUDINARY_API_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: fdis-plan-secret
+                key: CLOUDINARY_API_SECRET
