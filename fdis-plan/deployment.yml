@@ -10,7 +10,7 @@ spec:
       app: fdis-plan-app
   
   template:
-    meta: 
+    metadata: 
       labels:
         app: fdis-plan-app
     spec:
