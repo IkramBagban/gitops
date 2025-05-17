@@ -13,7 +13,7 @@ spec:
   template:
     metadata:
       labels:
-        name: amuzic-web
+        app: amuzic-app
     spec:
       containers:
         - name: amuzic
