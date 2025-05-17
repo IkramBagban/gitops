@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amuzic-deployment
+  labels:
+    app: amuzic-app
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: amuzic-app
+  template:
+    metadata:
+      labels:
+        name: amuzic-web
+    spec:
+      containers:
+        - name: amuzic
+          image: ikrambagban/amuzic:c6330e6b20a9cd0f5709dde149469dc32180b6a6 
+          ports: 
+            - containerPort: 3000
+          resources: 
+            requests:
+              memory: 100Mi
+              cpu: 400m
+            limits: 
+              memory: 200Mi
+              cpu: 800m
+          env: 
+          - name: DB_HOST
+            valueFrom:
+              secretKeyRef:
+                name: amuzic-secret
+                key: DB_HOST
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: amuzic-secret
+                key: DB_PASSWORD
+
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: amuzic-secret
+                key: DB_USER
+
+          - name: DB_NAME
+            valueFrom:
+              secretKeyRef:
+                name: amuzic-secret
+                key: DB_NAME
+
+          - name: DB_PORT
+            valueFrom:
+              secretKeyRef:
+                name: amuzic-secret
+                key: DB_PORT
+
+          - name: CLOUDINARY_CLOUD_NAME
+            valueFrom:
+              secretKeyRef:
+                name: amuzic-secret
+                key: CLOUDINARY_CLOUD_NAME
+
+          - name: CLOUDINARY_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: amuzic-secret
+                key: CLOUDINARY_API_KEY
+
+          - name: CLOUDINARY_API_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: amuzic-secret
+                key: CLOUDINARY_API_SECRET
+          - name: NEXTAUTH_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: amuzic-secret
+                key: NEXTAUTH_SECRET
+          - name: NEXT_PUBLIC_GOOGLE_PLACE_ID
+            valueFrom:
+              secretKeyRef:
+                name: amuzic-secret
+                key: NEXT_PUBLIC_GOOGLE_PLACE_ID
