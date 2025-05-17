@@ -17,3 +17,13 @@ spec:
             name: fdis-plan-service
             port:
               number: 80
+  - host: amuzic.ibmeet.xyz
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: amuzic-service
+            port:
+              number: 80
