@@ -4,8 +4,18 @@ metadata:
   name: ingres-nginx
   labels:
     name: ingress-nginx
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   ingressClassName: nginx
+  tls: 
+    - hosts:
+      - fdis.ibmeet.xyz
+      secretName: fdis-plan-tls
+    - hosts:
+      - amuzic.ibmeet.xyz
+      secretName: amuzic-tls
   rules:
   - host: fdis.ibmeet.xyz
     http:
