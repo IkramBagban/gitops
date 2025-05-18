@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: amuzic
-          image: ikrambagban/amuzic:02e1d66c1cfbd049b7844c514b144ef250f8babd
+          image: ikrambagban/amuzic:6cd5413418ea8594bf2d4f4eae0601c6913e9fc8
           ports: 
             - containerPort: 3000
           resources: 
