@@ -47,6 +47,6 @@ spec:
         path: "/api"
         backend:
           service:
-            name: proxlay-service
+            name: proxlay-backend-service
             port:
               number: 80
