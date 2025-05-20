@@ -16,6 +16,9 @@ spec:
     - hosts:
       - amuzic.ibmeet.xyz
       secretName: amuzic-tls
+    - hosts:
+      - proxlay.ibmeet.xyz
+      secretName: proxlay-tls
   rules:
   - host: fdis.ibmeet.xyz
     http:
@@ -35,5 +38,15 @@ spec:
         backend:
           service:
             name: amuzic-service
+            port:
+              number: 80
+  - host: proxlay.ibmeet.xyz
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/api"
+        backend:
+          service:
+            name: proxlay-service
             port:
               number: 80

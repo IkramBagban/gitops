@@ -1,0 +1,32 @@
+piVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proxlay-backend-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: proxlay-backend-app
+  template:
+    metadata:
+      labels:
+        app: proxlay-backend-app
+    spec:
+      containers:
+      - name: proxlay-backend-app
+        image: ikrambagban/proxlay-backend:1ef3f8700055a69a4f0647cbcfafb151a547a7bb
+        resources:
+          
+        ports:
+          - containerPort: 3000
+        volumeMounts:
+          - name: secret
+            mountPath: /app/.env
+            subPath: .env
+      volumes:
+        - name: secret
+          secret:
+            secretName: proxlay-backend-secret
+            items:
+              - key: .env
+                path: .env
