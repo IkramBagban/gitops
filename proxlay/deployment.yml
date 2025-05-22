@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: proxlay-backend-app
-        image: ikrambagban/proxlay-backend:5bbb97eb55bcf861a2c29e0d33c1f0940cb3a7ab
+        image: ikrambagban/proxlay-backend:aad8409fde869944b46d343b8ed639f3f08588ba
         ports:
           - containerPort: 3000
         volumeMounts:
