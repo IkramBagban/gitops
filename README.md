@@ -40,3 +40,8 @@ cat secret.yaml | kubeseal --controller-namespace kube-system --controller-name 
    kubectl get secret db-secret -n kube-system
    ```
 
+5. **See Secret**
+   ```sh
+   kubectl get secrets
+   kubectl get secret DATABASE_URL -o json
+   ```
