@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: fdis-plan-app
-        image: ikrambagban/fdis-plan:7bb6a2b9f1d6dbf45e90bee517de499b420b1780
+        image: ikrambagban/fdis-plan:80ed0b12db56748427b6a2aad2b4233ca23ab6ff
         env:
           - name: DB_HOST
             valueFrom:
